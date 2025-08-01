@@ -15,7 +15,8 @@ export default function LogoSection() {
   useEffect(() => {
     async function fetchLogos() {
       try {
-        const res = await fetch('https://next-js-fort-xcore-admin-panel-payload-5h17w5u29.vercel.app/api/logo/');
+        const res = await fetch('/api/logo'); // no CORS issue
+
         const data = await res.json();
         console.log(res);
         console.log(data);
