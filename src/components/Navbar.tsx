@@ -24,6 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectedSection, onSelectSection }) => 
                 src="/fortxcore-logo.png"
                 alt="FORTXCORE Logo"
                 fill
+                sizes="(min-width: 1024px) 200px, 120px"
                 className="object-contain"
                 priority
               />
