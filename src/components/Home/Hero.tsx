@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <div className="h-[700px] relative px-4 md:px-28 pt-20 pb-16 bg-white flex items-center justify-between">
       <div className=" max-w-full mx-auto">
-        <div className="grid lg:grid-cols-2 gap-x-[400px] items-center">
+        <div className="grid lg:grid-cols-2 gap-x-[38vh] items-center">
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-4">
@@ -30,7 +30,7 @@ export default function Hero() {
 
           <div className="relative h-96 lg:h-[750px]">
             <Image
-              src="/homepageimage1.png"
+              src="/homepageimage1.svg"
               alt="homepageimage1 Logo"
               fill
               className="object-contain"
