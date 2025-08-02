@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectedSection, onSelectSection }) => 
 
   return (
     <>
-      <nav className="fixed top-5 left-20 right-20 bg-white flex items-center justify-between px-8">
+      <nav className="fixed top-5 left-20 right-20 bg-white flex items-center justify-between px-8 z-40">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <div className="relative w-32 h-8">
@@ -37,24 +37,24 @@ const Navbar: React.FC<NavbarProps> = ({ selectedSection, onSelectSection }) => 
               <button
                 key={section}
                 onClick={() => onSelectSection(section)}
-                className={`text-primary hover:bg-gray-200 rounded-lg font-montserrat font-semibold p-2 ${selectedSection === section ? "bg-gray-200" : ""}`}
+                className={`text-primary hover:bg-gray-200  rounded-lg font-montserrat font-semibold p-2 ${selectedSection === section ? "bg-gray-200" : ""}`}
               >
                 {section}
               </button>
             ))}
           </div>
         </div>
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden  flex items-center relative">
           <button
             onClick={() => setOpen(!open)}
-            className="w-25 py-3 border-1 border-gray-200 rounded-xl bg-white font-bold text-black  focus:outline-none"
+            className="w-28 py-3 border-1 border-gray-200 rounded-xl bg-white font-bold text-black focus:outline-none"
           >
             {selectedSection}
           </button>
 
           {/* Dropdown Menu */}
           {open && (
-            <div className="absolute left-52 mt-65 w-25 border-1 border-gray-200 rounded-xl bg-white shadow-lg flex flex-col items-center py-4 z-50">
+            <div className="absolute top-full right-0 mt-2 w-28 border border-gray-200 rounded-xl bg-white shadow-lg flex flex-col items-center py-2 z-50">
               {navItems.map((section) => (
                 <button
                   key={section}
@@ -62,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ selectedSection, onSelectSection }) => 
                     onSelectSection(section);
                     setOpen(false);
                   }}
-                  className={`w-20 px-4 py-2 rounded-xl font-bold text-black hover:bg-gray-100 ${selectedSection === section ? "bg-gray-200 text-blue-600" : ""}`}
+                  className={`text-primary hover:bg-gray-200 rounded-lg font-montserrat font-semibold px-5 py-2 mx-2 my-1 text-center ${selectedSection === section ? "bg-gray-200" : ""}`}
                 >
                   {section}
                 </button>
