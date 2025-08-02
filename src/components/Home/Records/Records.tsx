@@ -45,10 +45,10 @@ const Records = () => {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {/* Projects Completed */}
+          {/* Projects Completed - Mobile: text right, image left | Desktop: centered */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
-            <div className="text-center">
-              <div className="relative w-32 h-32 mx-auto mb-4">
+            <div className="flex flex-row md:flex-col items-center md:text-center w-full">
+              <div className="relative w-32 h-32 md:w-42 md:h-42 mx-auto md:mb-4 order-1 md:order-1">
                 <Image
                   src="/record1.svg"
                   alt="records"
@@ -59,24 +59,38 @@ const Records = () => {
                 />
               </div>
 
-              <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                {stats.length > 0 ? stats[0]?.completedProjects  || 0 : 0}+
-              </h3>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">
-                Projects Completed
-              </h4>
-              <p className="text-gray-600 text-sm md:text-base">
-                Solutions that drive efficiency and impact.
-              </p>
+              <div className="text-left md:text-center ml-4 md:ml-0 mt-0 md:mt-0 order-2 md:order-2">
+                <h3 className="text-4xl md:text-6xl font-montserrat font-extrabold text-gray-900 mb-3">
+                  {stats.length > 0 ? stats[0]?.completedProjects  || 0 : 0}+
+                </h3>
+                <h4 className="text-lg md:text-xl font-montserrat font-bold text-gray-800 mb-3">
+                  Projects Completed
+                </h4>
+                <p className="text-black text-sm font-montserrat font-light md:text-base">
+                  Solutions that drive efficiency and impact.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Projects Completed */}
+          {/* Happy Clients - Mobile: text left, image right | Desktop: centered */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
-            <div className="text-center">
-              <div className="relative w-32 h-32 mx-auto mb-4">
+            <div className="flex flex-row md:flex-col items-center md:text-center w-full">
+              <div className="text-left md:text-center mr-4 md:mr-0 mt-0 md:mt-0 order-1 md:order-2">
+                <h3 className="text-4xl md:text-6xl font-montserrat font-extrabold text-gray-900 mb-3">
+                  {stats.length > 1 ? stats[1]?.completedProjects  || 200 : 200}+
+                </h3>
+                <h4 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 mb-3">
+                Happy Clients
+                </h4>
+                <p className="text-black text-sm font-montserrat font-light md:text-base">
+                Trusted by 150+ businesses for top-tier IT solutions.
+                </p>
+              </div>
+
+              <div className="relative w-32 h-32 md:w-42 md:h-42 mx-auto md:mb-4 order-2 md:order-1">
                 <Image
-                  src="/record1.svg"
+                  src="/record2.svg"
                   alt="records"
                   fill
                   sizes="(min-width: 1024px) 200px, 120px"
@@ -84,25 +98,27 @@ const Records = () => {
                   priority
                 />
               </div>
-
-              <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                {stats.length > 1 ? stats[1]?.completedProjects  || 200 : 200}+
-              </h3>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">
-                Projects Completed
-              </h4>
-              <p className="text-gray-600 text-sm md:text-base">
-                Solutions that drive efficiency and impact.
-              </p>
             </div>
           </div>
 
-          {/* Projects Completed */}
+          {/* Years of Excellence - Mobile: text left, image right | Desktop: centered */}
           <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
-            <div className="text-center">
-              <div className="relative w-32 h-32 mx-auto mb-4">
+            <div className="flex flex-row md:flex-col items-center md:text-center w-full">
+              <div className="text-left md:text-center mr-4 md:mr-0 mt-0 md:mt-0 order-1 md:order-2">
+                <h3 className="text-4xl md:text-6xl font-montserrat font-extrabold text-gray-900 mb-3">
+                  {stats.length > 2 ? stats[2]?.completedProjects  || 200 : 200}+
+                </h3>
+                <h4 className="text-lg md:text-xl font-montserrat font-bold text-gray-800 mb-3">
+                Years of Excellence
+                </h4>
+                <p className="text-black text-sm font-montserrat font-light md:text-base">
+                A decade of expertise in delivering cutting-edge technology.
+                </p>
+              </div>
+
+              <div className="relative w-32 h-32 md:w-42 md:h-42 mx-auto md:mb-4 order-2 md:order-1">
                 <Image
-                  src="/record1.svg"
+                  src="/record3.svg"
                   alt="records"
                   fill
                   sizes="(min-width: 1024px) 200px, 120px"
@@ -110,16 +126,6 @@ const Records = () => {
                   priority
                 />
               </div>
-
-              <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                {stats.length > 2 ? stats[2]?.completedProjects  || 200 : 200}+
-              </h3>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">
-                Projects Completed
-              </h4>
-              <p className="text-gray-600 text-sm md:text-base">
-                Solutions that drive efficiency and impact.
-              </p>
             </div>
           </div>
         </div>
