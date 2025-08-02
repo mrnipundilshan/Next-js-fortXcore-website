@@ -2,7 +2,7 @@
 
 // import Hero from '@/components/Hero'
 import React, { useState } from "react";
-import Navbar from '@/components/Navbar';
+import Navbar from "@/components/Home/Navbar/Navbar";
 import About from '@/components/About/About';
 import HomePage from "@/components/Home/Home";
 
