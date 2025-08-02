@@ -1,6 +1,34 @@
+'use client';
+
+type Stats = {
+    id: number;
+    completedProjects : number;
+  };
+
 import React from "react";
 import Image from "next/image";
+import { useEffect, useState } from 'react';
+
 const Records = () => {
+
+    const [stats, setStats] = useState<Stats[]>([]);
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch('/api/stats'); // no CORS issue
+        const data = await res.json();
+        // Sort the stats by id in ascending order
+        const sortedStats = (data.docs || []).sort((a: Stats, b: Stats) => a.id - b.id);
+        setStats(sortedStats);
+      } catch (error) {
+        console.error('Failed to fetch logos:', error);
+      }
+    }
+
+    fetchStats();
+  }, []);
+
   return (
     <section className="py-8">
       {/* Light gray background only for inner content */}
@@ -32,7 +60,7 @@ const Records = () => {
               </div>
 
               <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                200+
+                {stats.length > 0 ? stats[0]?.completedProjects  || 0 : 0}
               </h3>
               <h4 className="text-xl font-bold text-gray-800 mb-3">
                 Projects Completed
@@ -58,7 +86,7 @@ const Records = () => {
               </div>
 
               <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                200+
+                {stats.length > 1 ? stats[1]?.completedProjects  || 200 : 200}+
               </h3>
               <h4 className="text-xl font-bold text-gray-800 mb-3">
                 Projects Completed
@@ -84,7 +112,7 @@ const Records = () => {
               </div>
 
               <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                200+
+                {stats.length > 2 ? stats[2]?.completedProjects  || 200 : 200}+
               </h3>
               <h4 className="text-xl font-bold text-gray-800 mb-3">
                 Projects Completed
