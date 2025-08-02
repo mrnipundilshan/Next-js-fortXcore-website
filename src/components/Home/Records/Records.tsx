@@ -9,6 +9,44 @@ import React from "react";
 import Image from "next/image";
 import { useEffect, useState } from 'react';
 
+// Custom hook for count-up animation
+const useCountUp = (end: number, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.floor(easeOutQuart * end);
+      
+      setCount(currentCount);
+      
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    if (end > 0) {
+      setCount(0);
+      animationFrame = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [end, duration]);
+
+  return count;
+};
+
 const Records = () => {
 
     const [stats, setStats] = useState<Stats[]>([]);
@@ -28,6 +66,11 @@ const Records = () => {
 
     fetchStats();
   }, []);
+
+  // Animated counts for each stat
+  const animatedProjects = useCountUp(stats.length > 0 ? stats[0]?.completedProjects || 0 : 0);
+  const animatedClients = useCountUp(stats.length > 1 ? stats[1]?.completedProjects || 0 : 0);
+  const animatedYears = useCountUp(stats.length > 2 ? stats[2]?.completedProjects || 0 : 0);
 
   return (
     <section className="py-8">
@@ -61,7 +104,7 @@ const Records = () => {
 
               <div className="text-left md:text-center ml-4 md:ml-0 mt-0 md:mt-0 order-2 md:order-2">
                 <h3 className="text-4xl md:text-6xl font-montserrat font-extrabold text-gray-900 mb-3">
-                  {stats.length > 0 ? stats[0]?.completedProjects  || 0 : 0}+
+                  {animatedProjects}+
                 </h3>
                 <h4 className="text-lg md:text-xl font-montserrat font-bold text-gray-800 mb-3">
                   Projects Completed
@@ -78,7 +121,7 @@ const Records = () => {
             <div className="flex flex-row md:flex-col items-center md:text-center w-full">
               <div className="text-left md:text-center mr-4 md:mr-0 mt-0 md:mt-0 order-1 md:order-2">
                 <h3 className="text-4xl md:text-6xl font-montserrat font-extrabold text-gray-900 mb-3">
-                  {stats.length > 1 ? stats[1]?.completedProjects  || 200 : 200}+
+                  {animatedClients}+
                 </h3>
                 <h4 className="text-lg md:text-xl font-bold font-montserrat text-gray-800 mb-3">
                 Happy Clients
@@ -106,7 +149,7 @@ const Records = () => {
             <div className="flex flex-row md:flex-col items-center md:text-center w-full">
               <div className="text-left md:text-center mr-4 md:mr-0 mt-0 md:mt-0 order-1 md:order-2">
                 <h3 className="text-4xl md:text-6xl font-montserrat font-extrabold text-gray-900 mb-3">
-                  {stats.length > 2 ? stats[2]?.completedProjects  || 200 : 200}+
+                  {animatedYears}+
                 </h3>
                 <h4 className="text-lg md:text-xl font-montserrat font-bold text-gray-800 mb-3">
                 Years of Excellence
