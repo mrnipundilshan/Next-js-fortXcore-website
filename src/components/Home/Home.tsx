@@ -1,6 +1,7 @@
 import Records from "./Records/Records";
 import Hero from "./Hero/Hero";
 import LogoSection from "./LogoSection/LogoSection";
+import Feedback from "./Feedback/Feedback";
 
 export default function HomePage() {
   return (<>
@@ -8,6 +9,7 @@ export default function HomePage() {
     <Hero />
     <LogoSection />
     <Records />
+    <Feedback/>
 
   </section>
     </>
