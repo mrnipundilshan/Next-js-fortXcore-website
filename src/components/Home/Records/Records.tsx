@@ -60,7 +60,7 @@ const Records = () => {
               </div>
 
               <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
-                {stats.length > 0 ? stats[0]?.completedProjects  || 0 : 0}
+                {stats.length > 0 ? stats[0]?.completedProjects  || 0 : 0}+
               </h3>
               <h4 className="text-xl font-bold text-gray-800 mb-3">
                 Projects Completed
